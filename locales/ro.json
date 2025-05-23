@@ -1,0 +1,29 @@
+{
+  "LanguageSelect": {
+    "ro": "Română",
+    "en": "Engleză"
+  },
+  "LoginPage": {
+    "tabs": {
+      "login": "Autentificare",
+      "signup": "Inregistrare"
+    },
+   "title": {
+      "login": "Bine ati revenit!",
+      "signup": "Creare cont"
+    },
+    "description": {
+      "login": "Introduceti datele de autentificare pentru a accesa contul",
+      "signup": "Introduceti datele de inregistrare a contului"
+    },
+    "email": {
+      "label": "Email",
+      "placeholder": "m@exemplu.md"
+    },
+    "password": {
+      "label": "Parola",
+      "forgot": "Ati uitat parola?"
+    },
+    "loginBtn": "Autentificare"
+  }
+}

@@ -1,6 +1,6 @@
 generator client {
   provider = "prisma-client-js"
-  output   = "./client"
+  output   = "./"
 }
 
 datasource db {
@@ -87,23 +87,33 @@ model sport {
 }
 
 model users {
-  id                                                        Int                   @id @default(autoincrement())
-  name                                                      String                @db.VarChar(50)
-  surname                                                   String                @db.VarChar(50)
-  user_role                                                 users_role?           @default(GUEST)
-  email                                                     String                @unique(map: "unique_user_email") @db.VarChar(100)
-  email_verified                                            Boolean?              @default(false)
-  created_at                                                DateTime?             @default(now()) @db.Timestamptz(6)
-  athlete_athlete_created_byTousers                         athlete[]             @relation("athlete_created_byTousers")
-  athlete_athlete_updated_byTousers                         athlete[]             @relation("athlete_updated_byTousers")
-  athlete_competition_athlete_competition_created_byTousers athlete_competition[] @relation("athlete_competition_created_byTousers")
-  athlete_competition_athlete_competition_updated_byTousers athlete_competition[] @relation("athlete_competition_updated_byTousers")
-  athlete_sport_athlete_sport_created_byTousers             athlete_sport[]       @relation("athlete_sport_created_byTousers")
-  athlete_sport_athlete_sport_updated_byTousers             athlete_sport[]       @relation("athlete_sport_updated_byTousers")
-  competition_competition_created_byTousers                 competition[]         @relation("competition_created_byTousers")
-  competition_competition_updated_byTousers                 competition[]         @relation("competition_updated_byTousers")
-  sport_sport_created_byTousers                             sport[]               @relation("sport_created_byTousers")
-  sport_sport_updated_byTousers                             sport[]               @relation("sport_updated_byTousers")
+  id                                                        Int                        @id @default(autoincrement())
+  name                                                      String                     @db.VarChar(50)
+  surname                                                   String                     @db.VarChar(50)
+  user_role                                                 users_role?                @default(GUEST)
+  email                                                     String                     @unique(map: "unique_user_email") @db.VarChar(100)
+  email_verified                                             Boolean?                   @default(false)
+  password                                                  String                     @db.VarChar(200)
+  created_at                                                DateTime?                  @default(now()) @db.Timestamptz(6)
+  athlete_athlete_created_byTousers                         athlete[]                  @relation("athlete_created_byTousers")
+  athlete_athlete_updated_byTousers                         athlete[]                  @relation("athlete_updated_byTousers")
+  athlete_competition_athlete_competition_created_byTousers athlete_competition[]      @relation("athlete_competition_created_byTousers")
+  athlete_competition_athlete_competition_updated_byTousers athlete_competition[]      @relation("athlete_competition_updated_byTousers")
+  athlete_sport_athlete_sport_created_byTousers             athlete_sport[]            @relation("athlete_sport_created_byTousers")
+  athlete_sport_athlete_sport_updated_byTousers             athlete_sport[]            @relation("athlete_sport_updated_byTousers")
+  competition_competition_created_byTousers                 competition[]              @relation("competition_created_byTousers")
+  competition_competition_updated_byTousers                 competition[]              @relation("competition_updated_byTousers")
+  sport_sport_created_byTousers                             sport[]                    @relation("sport_created_byTousers")
+  sport_sport_updated_byTousers                             sport[]                    @relation("sport_updated_byTousers")
+  users_verification_tokens                                  users_verification_tokens?
+}
+
+model users_verification_tokens {
+  id      Int      @id @default(autoincrement())
+  email   String   @unique(map: "users_verification_tokens_unique_email") @db.VarChar(100)
+  token   String   @db.VarChar(100)
+  expires DateTime @db.Timestamptz(6)
+  users   users    @relation(fields: [email], references: [email], onDelete: NoAction, onUpdate: NoAction)
 }
 
 enum athlete_competition_placement {

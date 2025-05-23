@@ -1,0 +1,29 @@
+{
+  "LanguageSelect": {
+    "ro": "Romanian",
+    "en": "English"
+  },
+  "LoginPage": {
+    "tabs": {
+      "login": "Login",
+      "signup": "Sign Up"
+    },
+    "title": {
+      "login": "Welcome back",
+      "signup": "Create an account"
+    },
+    "description": {
+      "login": "Enter your credentials to access your account",
+      "signup": "Enter your information to create an account"
+    },
+    "email": {
+      "label": "Email",
+      "placeholder": "m@example.com"
+    },
+    "password": {
+      "label": "Password",
+      "forgot": "Forgot password?"
+    },
+    "loginBtn": "Login"
+  }
+}
