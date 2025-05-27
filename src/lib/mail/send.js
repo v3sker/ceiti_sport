@@ -6,7 +6,8 @@ import VerificationMail from "@/components/mail/VerificationMail";
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 export const sendVerificationEmail = async (fullName, email, token) => {
-  const emailConfirmationLink = `${process.env.APP_URL}/auth/new-verification?token=${token}`
+  const appUrl = process.env.ON_DEV ? 'http://localhost:3000' : process.env.APP_URL
+  const emailConfirmationLink = `${appUrl}/auth/mail-verification?token=${token}`
 
   try {
     await resend.emails.send({

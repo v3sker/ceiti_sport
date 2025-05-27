@@ -1,29 +1,122 @@
 {
-  "LanguageSelect": {
+  "languageSelect": {
+    "label": "Language",
     "ro": "Romanian",
     "en": "English"
   },
-  "LoginPage": {
-    "tabs": {
-      "login": "Login",
-      "signup": "Sign Up"
+
+  "login": {
+    "page": {
+      "title": "Welcome back",
+      "description": "Enter your credentials to access your account",
+      "form": {
+        "email": {
+          "label": "Email",
+          "placeholder": "m@example.com"
+        },
+        "password": {
+          "label": "Password",
+          "forgot": "Forgot password?"
+        },
+        "button": "Login"
+      },
+
+      "promise": {
+        "loading": "Logging in...",
+        "success": "Logged in!",
+        "error": "Error at logging in!"
+      }
     },
-    "title": {
-      "login": "Welcome back",
-      "signup": "Create an account"
+
+    "function": {
+      "validation": {
+        "email": {
+          "required": "Email is required",
+          "invalid": "Email is invalid"
+        },
+        "password": {
+          "required": "Password is required",
+          "min": "Password must be at least {min} characters",
+          "max": "Password must be at most {max} characters"
+        }
+      },
+      "errors": {
+        "1_incorrectData": "Incorrect email or password!",
+        "2_emailNotVerified": "Email not verified! Check your inbox",
+        "3_emailNotVerified_Sent": "Email not verified! Sent new verification email",
+        "4_accessDenied": "Access denied!",
+        "5_unknown": "Unknown error! Contact administrator.",
+        "6_unknownWithDetails": "Unknown error! Contact administrator. Error: {error}",
+        "7_validation": "Validation error!",
+        "8_validationWithDetails": "Validation error! Details: {details}"
+      }
+    }
+  },
+
+  "mailVerification": {
+    "page": {
+      "title": "Mail verification",
+      "pending": "Verifying your mail...",
+      "success": "Verified successfully!",
+      "errors": {
+        "noToken": "Verification token not specified!"
+      }
     },
-    "description": {
-      "login": "Enter your credentials to access your account",
-      "signup": "Enter your information to create an account"
+
+    "function": {
+      "errors": {
+        "1_incorrectToken": "Verification error! Incorrect token",
+        "2_expiredToken": "Verification error! Token has expired",
+        "3_noUserByMail": "Verification error! Couldn't find user with this email",
+        "0_unknown": "Unknown verification error!"
+      }
+    }
+  },
+
+  "sidebar": {
+    "dashboard": "Dashboard",
+    "team": {
+      "label": "Team",
+      "athletes": "Athletes",
+      "sports": "Sports",
+      "events": "Events",
+      "participation": "Participation"
     },
-    "email": {
-      "label": "Email",
-      "placeholder": "m@example.com"
+    "admin": {
+      "label": "Admin",
+      "users": "Users",
+      "new_user": "New User"
+    }
+  },
+
+  "mini_profile": {
+    "roles": {
+      "guest": "Guest",
+      "user": "User",
+      "moderator": "Moderator",
+      "admin": "Administrator"
     },
-    "password": {
-      "label": "Password",
-      "forgot": "Forgot password?"
+    "sign_out": "Sign Out"
+  },
+
+  "dashboard": {
+    "athletes": {
+      "title": "Athletes",
+      "not_found": "No Athletes Found",
+      "call_to_add": "Add records about athletes",
+      "add_btn": "Add"
     },
-    "loginBtn": "Login"
+    "sports": {
+      "title": "Sports",
+      "not_found": "No Sports Found",
+      "call_to_add": "Create new sports",
+      "add_btn": "Create"
+    },
+    "events": {
+      "title": "Upcoming Events",
+      "not_found": "No Upcoming Events",
+      "call_to_add": "Add records about new events",
+      "add_btn": "Add"
+    }
   }
 }

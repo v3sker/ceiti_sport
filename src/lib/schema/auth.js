@@ -1,7 +1,18 @@
 import * as yup from "yup";
 
-
 // AUTH SCHEMAS
+export function getLoginSchema(t) {
+  return yup.object().shape({
+    email: yup.string()
+      .required(t('validation.email.required'))
+      .email(t('validation.email.invalid')),
+    password: yup.string()
+      .required(t('validation.password.required'))
+      .min(6, t('validation.password.min', { min: 6 }))
+      .max(20, t('validation.password.max', { max: 20 })),
+  })
+}
+
 export const LoginSchema = yup.object().shape({
   email: yup.string()
     .required("Email is required")

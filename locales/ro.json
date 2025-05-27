@@ -1,29 +1,121 @@
 {
-  "LanguageSelect": {
+  "languageSelect": {
+    "label": "Limbă",
     "ro": "Română",
     "en": "Engleză"
   },
-  "LoginPage": {
-    "tabs": {
-      "login": "Autentificare",
-      "signup": "Inregistrare"
+
+  "login": {
+    "page": {
+      "title": "Bine a-ti revenit!",
+      "description": "Introduceti datele de autentificare pentru a accesa contul",
+      "form": {
+        "email": {
+          "label": "Email",
+          "placeholder": "m@exemplu.md"
+        },
+        "password": {
+          "label": "Parola"
+        },
+        "button": "Autentificare"
+      },
+
+      "promise": {
+        "loading": "Autentificare...",
+        "success": "Autentificare reusita!",
+        "error": "Eroare de autentificare!"
+      }
     },
-   "title": {
-      "login": "Bine ati revenit!",
-      "signup": "Creare cont"
+
+    "function": {
+      "validation": {
+        "email": {
+          "required": "Email-ul e obligatoriu",
+          "invalid": "Email incorect"
+        },
+        "password": {
+          "required": "Parola e obligatorie",
+          "min": "Parola trebuie sa contina cel putin {min} caractere",
+          "max": "Parola trebuie sa contina cel mult {max} caractere"
+        }
+      },
+      "errors": {
+        "1_incorrectData": "Email sau parola incorecta!",
+        "2_emailNotVerified": "Email-ul nu este verificat! Verificati posta",
+        "3_emailNotVerified_Sent": "Email-ul nu este verificat! Era trimisa scrisoare noua",
+        "4_accessDenied": "Acces interzis!",
+        "5_unknown": "Eroare necunoscuta! Contactati administratorul",
+        "6_unknownWithDetails": "Eroare necunoscuta! Contactati administratorul. Eroare: {error}",
+        "7_validation": "Eroare de validare!",
+        "8_validationWithDetails": "Eroare de validare! Detalii: {details}"
+      }
+    }
+  },
+
+  "mailVerification": {
+    "page": {
+      "title": "Verificare email",
+      "pending": "Se verifică emailul...",
+      "success": "Email verificat cu succes!",
+      "errors": {
+        "noToken": "Tokenul de verificare nu a fost specificat!"
+      }
     },
-    "description": {
-      "login": "Introduceti datele de autentificare pentru a accesa contul",
-      "signup": "Introduceti datele de inregistrare a contului"
+
+    "function": {
+      "errors": {
+        "1_incorrectToken": "Eroare de verificare! Token incorect",
+        "2_expiredToken": "Eroare de verificare! Tokenul a expirat",
+        "3_noUserByMail": "Eroare de verificare! Nu am găsit un utilizator cu acest email",
+        "0_unknown": "Eroare necunoscută de verificare!"
+      }
+    }
+  },
+
+  "mini_profile": {
+    "roles": {
+      "guest": "Vizitator",
+      "user": "Utilizator",
+      "moderator": "Moderator",
+      "admin": "Administrator"
     },
-    "email": {
-      "label": "Email",
-      "placeholder": "m@exemplu.md"
+    "sign_out": "Deconectare"
+  },
+
+  "sidebar": {
+    "dashboard": "Tablou de bord",
+    "team": {
+      "label": "Echipă",
+      "athletes": "Atleți",
+      "sports": "Sporturi",
+      "events": "Evenimente",
+      "participation": "Participare"
     },
-    "password": {
-      "label": "Parola",
-      "forgot": "Ati uitat parola?"
+    "admin": {
+      "label": "Administrare",
+      "users": "Utilizatori",
+      "new_user": "Utilizator nou"
+    }
+  },
+
+  "dashboard": {
+    "athletes": {
+      "title": "Atleți",
+      "not_found": "Niciun atlet găsit",
+      "call_to_add": "Adaugă înregistrări despre atleți",
+      "add_btn": "Adaugă"
     },
-    "loginBtn": "Autentificare"
+    "sports": {
+      "title": "Sporturi",
+      "not_found": "Niciun sport găsit",
+      "call_to_add": "Creează sporturi noi",
+      "add_btn": "Creează"
+    },
+    "events": {
+      "title": "Evenimente viitoare",
+      "not_found": "Niciun eveniment viitor",
+      "call_to_add": "Adaugă înregistrări despre evenimente noi",
+      "add_btn": "Adaugă"
+    }
   }
 }

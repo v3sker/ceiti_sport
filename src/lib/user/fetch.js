@@ -15,7 +15,7 @@ export async function getUserById(id) {
   try { 
     if (!id) throw new Error('ID is required');
 
-    return await db.users.findUnique({ where: { id } });
+    return await db.users.findUnique({ where: { id: parseInt(id) } });
    } catch (err) {
     console.error(`[getUserById] error: ${err.message}`);
     return null;

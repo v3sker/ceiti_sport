@@ -16,7 +16,7 @@ export async function login(values) {
     const existingUserByEmail = await getUserByEmail(email);
 
     // If user not found
-    if (!existingUserByEmail) return { error: "Неверный логин, пароль или T-OTP!" };
+    if (!existingUserByEmail) return { error: 1 };
 
     // If email not verified
     if (!existingUserByEmail.email_verified) {
@@ -25,39 +25,39 @@ export async function login(values) {
       if (!currentVerificationToken || currentVerificationToken.expires < new Date()) {
         const newVerificationToken = await generateVerificationToken(email);
         await sendVerificationEmail(existingUserByEmail.name, newVerificationToken.email, newVerificationToken.token);
-        return { error: "Email not verified! Sent new verification email." };
+        return { error: 3 };
       }
 
-      return { error: "Email not verified! Check your inbox." };
+      return { error: 2 };
     }
 
     await signIn("credentials", {
       email,
       password,
-      redirect: false,
-    })
+      redirect: false
+    });
 
-    return { success: 'Авторизация прошла успешно! Перенаправляем..' };
+    return { success: true };
   } catch (error) {
     if (error instanceof AuthError) {
       switch (error.type) {
         case "CredentialsSignin": {
           console.error(`[SECURITY] incorrect password logging into ${values.email}, timestamp: ${new Date()}`);
-          return { error: "Неверный логин, пароль или T-OTP!" }
+          return { error: 1 }
         }
         case "AccessDenied":
-          return { error: `Доступ запрещён системой безопасности! Убедитесь что ваша почта подтверждена.` }
+          return { error: 4 }
         default:
           console.error('login error: ', error)
-          return { error: `Ошибка авторизации. Обратитесь к администратору! Ошибка: ${error.type}` }
+          return { error: 6, errType: error.type }
       }
     }
 
     console.error('login error: ', error)
     if (error.inner) {
-      return { error: "Ошибка валидации! ", details: error.inner.map(e => e.message) };
+      return { error: 8, errDetails: error.inner.map(e => e.message) };
     }
 
-    return { error: "Ошибка валидации!" };
+    return { error: 7 };
   }
 }

@@ -1,3 +1,5 @@
+'use server'
+
 import { getUserLocale } from "@/lib/locale";
 import { getRequestConfig } from 'next-intl/server';
 

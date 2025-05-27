@@ -1,108 +1,188 @@
 "use client"
 
-import { useState } from "react"
-import { useTranslations } from "next-intl"
-import { useRouter } from "next/navigation"
+import { useForm} from "react-hook-form";
+import { useTranslations } from "next-intl";
+import { useState, useTransition } from "react";
+import { yupResolver } from "@hookform/resolvers/yup";
 
-import { LanguageSelector } from "@/components/ui/language-dropdown"
-import Link from "next/link"
-import Image from "next/image"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Button } from "@/components/ui/button"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { getLoginSchema } from "@/lib/schema/auth";
+
+import { Eye, EyeOff } from "lucide-react";
+
+import Image from "next/image";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import { LanguageSelector } from "@/components/ui/language-dropdown";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
+import { login } from "@/lib/auth/login";
+import toast from "react-hot-toast";
 
 export default function LoginPage() {
-  const t = useTranslations('LoginPage')
-  const tLang = useTranslations('LanguageSelect')
+  const [ showPass, setShowPass ] = useState(false);
+  const t = useTranslations('login.page');
+  const tFunc = useTranslations('login.function');
 
-  const router = useRouter();
-  const [ activeTab, setActiveTab ] = useState("login");
+  const [ isPending, startTransition ] = useTransition();
 
-  function handleLogin(e) {
-    e.preventDefault();
-  }
+  const LoginSchema = getLoginSchema(tFunc);
 
-  const handleSignup = (e) => {
-    e.preventDefault();
+  const form = useForm({
+    resolver: yupResolver(LoginSchema),
+    defaultValues: {
+      email: "",
+      password: "",
+    }
+  });
+
+  function handleLogin(values) {
+    const promise = new Promise((resolve, reject) => {
+      startTransition(async () => {
+        try {
+          await login(values).then(res => {
+            if (res.error) {
+              let errorMsg;
+              switch (res.error) {
+                case 1:
+                  errorMsg = tFunc('errors.1_incorrectData');
+                  break;
+                case 2:
+                  errorMsg = tFunc('errors.2_emailNotVerified');
+                  break;
+                case 3:
+                  errorMsg = tFunc('errors.3_emailNotVerified_Sent');
+                  break;
+                case 4:
+                  errorMsg = tFunc('errors.4_accessDenied');
+                  break;
+                case 6:
+                  if (res.errType) {
+                    errorMsg = tFunc('errors.6_unknownWithDetails', { error: res.errType });
+                  } else {
+                    errorMsg = tFunc('errors.5_unknown');
+                  }
+                  break;
+                case 7:
+                  errorMsg = tFunc('errors.7_validation');
+                  break;
+                case 8:
+                  if (res.errDetails) {
+                    errorMsg = tFunc('errors.8_validationWithDetails', { details: res.errDetails });
+                  } else {
+                    errorMsg = tFunc('errors.7_validation');
+                  }
+                  break;
+                default:
+                  errorMsg = tFunc('errors.5_unknown');
+              }
+
+              reject(errorMsg);
+            }
+
+            resolve();
+            setTimeout(() => {
+              window.location.reload();
+            }, 3000);
+          })
+        } catch (err) {
+          reject(err.message);
+        }
+      })
+    })
+
+    toast.promise(promise, {
+      "loading": t('promise.loading'),
+      "success": t('promise.success'),
+      "error": (err) => err || t('promise.error')
+    }).then();
+
+    return promise;
   }
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-gray-100 dark:bg-gray-900 p-4">
-      <LanguageSelector className='absolute top-4 right-4' />
-      
-      <Card className="w-full max-w-md">
-        <CardHeader className="space-y-1">
-          <div className="flex items-center justify-center mb-2">
-            <Link href="/" className="text-2xl font-bold">
-              <Image src='/logo.png' width={300} height={0} alt={'Logo Minister'} />
-            </Link>
-          </div>
-          <Tabs defaultValue="login" value={activeTab} onValueChange={setActiveTab} className="w-full">
-            <TabsList className="grid w-full grid-cols-2">
-              <TabsTrigger value="login">{t("tabs.login")}</TabsTrigger>
-              <TabsTrigger value="signup">{t("tabs.signup")}</TabsTrigger>
-            </TabsList>
-            <TabsContent value="login" className="mt-4">
-              <CardTitle className="text-2xl">{t("title.login")}</CardTitle>
-              <CardDescription>{t("description.login")}</CardDescription>
-            </TabsContent>
-            <TabsContent value="signup" className="mt-4">
-              <CardTitle className="text-2xl">{t("title.signup")}</CardTitle>
-              <CardDescription>{t("description.signup")}</CardDescription>
-            </TabsContent>
-          </Tabs>
-        </CardHeader>
-        <CardContent className="p-6">
-          {activeTab === "login" ? (
-            <form onSubmit={handleLogin}>
-              <div className="grid gap-4">
-                <div className="grid gap-2">
-                  <Label htmlFor="email">Email</Label>
-                  <Input id="email" type="email" placeholder="m@example.com" required />
-                </div>
-                <div className="grid gap-2">
-                  <div className="flex items-center justify-between">
-                    <Label htmlFor="password">Password</Label>
-                    <Link href="/forgot-password" className="text-sm text-primary underline-offset-4 hover:underline">
-                      Forgot password?
-                    </Link>
+      <div className={'absolute top-4 right-4 flex gap-2'}>
+        <LanguageSelector />
+      </div>
+
+      <div className={'w-full flex flex-col gap-2 items-center mb-32'}>
+        <div className="flex items-center justify-center mb-2">
+          <Image src='/logo.png' width={300} height={0} alt={'Logo Minister'} />
+        </div>
+
+        <Card className="w-full max-w-md">
+          <CardHeader className="space-y-1">
+            <CardTitle className="text-2xl">{t("title")}</CardTitle>
+            <CardDescription>{t("description")}</CardDescription>
+          </CardHeader>
+          <CardContent className="p-6 pt-0">
+            <Form {...form}>
+              <form onSubmit={form.handleSubmit(handleLogin)}>
+                <div className="grid gap-4">
+                  <div className="grid gap-2">
+                    <FormField
+                      control={form.control}
+                      disabled={isPending}
+                      name="email"
+                      render={({field}) => (
+                        <FormItem>
+                          <FormLabel>{t('form.email.label')}</FormLabel>
+
+                          <FormControl>
+                            <Input
+                              type="text"
+                              placeholder={t('form.email.placeholder')}
+                              {...field}
+                            />
+                          </FormControl>
+                          <FormMessage/>
+                        </FormItem>
+                      )}
+                    />
                   </div>
-                  <Input id="password" type="password" required />
+                  <FormField
+                    control={form.control}
+                    disabled={isPending}
+                    name="password"
+                    render={({field}) => (
+                      <FormItem>
+                        <FormLabel htmlFor={'password'}>{t('form.password.label')}</FormLabel>
+
+                        <FormControl>
+                          <div className={'relative'}>
+                            <Input
+                              type={showPass ? 'text' : 'password'}
+                              id='password'
+                              placeholder="••••••••"
+                              {...field}
+                            />
+                            <Button
+                              variant={'icon'}
+                              className={'absolute right-0 bottom-0 py-2 px-2.5 text-muted-foreground hover:text-black transition'}
+                              type={'button'}
+                              onClick={() => setShowPass(!showPass)}
+                            >
+                              {showPass ? <EyeOff className={'h-5 w-5'}/> : <Eye className={'h-5 w-5'}/>}
+                            </Button>
+                          </div>
+                        </FormControl>
+                        <FormMessage/>
+                      </FormItem>
+                    )}
+                  />
+                  <Button
+                    type="submit"
+                    className="w-full"
+                    disabled={isPending}
+                  >
+                    {t('form.button')}
+                  </Button>
                 </div>
-                <Button type="submit" className="w-full">
-                  Login
-                </Button>
-              </div>
-            </form>
-          ) : (
-            <form onSubmit={handleSignup}>
-              <div className="grid gap-4">
-                <div className="grid gap-2">
-                  <Label htmlFor="name">Full Name</Label>
-                  <Input id="name" type="text" placeholder="John Doe" required />
-                </div>
-                <div className="grid gap-2">
-                  <Label htmlFor="email">Email</Label>
-                  <Input id="email" type="email" placeholder="m@example.com" required />
-                </div>
-                <div className="grid gap-2">
-                  <Label htmlFor="password">Password</Label>
-                  <Input id="password" type="password" required />
-                </div>
-                <div className="grid gap-2">
-                  <Label htmlFor="confirm-password">Confirm Password</Label>
-                  <Input id="confirm-password" type="password" required />
-                </div>
-                <Button type="submit" className="w-full">
-                  Create Account
-                </Button>
-              </div>
-            </form>
-          )}
-        </CardContent>
-      </Card>
+              </form>
+            </Form>
+          </CardContent>
+        </Card>
+      </div>
     </div>
   )
 }

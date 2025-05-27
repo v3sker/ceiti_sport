@@ -1,11 +1,11 @@
 'use server';
 
-import {cookies} from 'next/headers';
+import { cookies } from "next/headers";
 
 export async function getUserLocale() {
-  return cookies().get('locale')?.value || "ro";
+  return (await cookies()).get('locale')?.value || 'ro';
 }
 
 export async function setUserLocale(locale) {
-  cookies().set('locale', locale);
+  (await cookies()).set('locale', locale);
 }

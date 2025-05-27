@@ -4,6 +4,7 @@
  */
 export const AUTH_ROUTES = [
   "/auth/login",
+  "/auth/forgot-password",
   "/auth/mail-verification",
 ];
 
@@ -17,4 +18,4 @@ export const API_AUTH_PREFIX = "/api";
 /**
  * The default redirect path after logging-in
  */
-export const DEFAULT_LOGIN_REDIRECT = "/clients";
+export const DEFAULT_LOGIN_REDIRECT = "/dashboard";
