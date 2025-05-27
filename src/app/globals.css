@@ -141,7 +141,11 @@
     --sidebar-ring: 217.2 91.2% 59.8%}
 }
 
-
+.no-spinner {
+  -moz-appearance: textfield;
+  -webkit-appearance: none;
+  appearance: textfield;
+}
 
 @layer base {
   * {

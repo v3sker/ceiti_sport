@@ -118,5 +118,45 @@
       "call_to_add": "Add records about new events",
       "add_btn": "Add"
     }
+  },
+
+  "athlete": {
+    "page": {
+      "title": "Athletes",
+      "controls": {
+        "orderDirection": {
+          "placeholder": "Direction...",
+          "labels": {
+            "ascending": "Ascending",
+            "descending": "Descending"
+          }
+        },
+        "orderBy": {
+          "placeholder": "Sort By...",
+          "labels": {
+            "createdAt": "Created At",
+            "updatedAt": "Updated At",
+            "gender": "Gender",
+            "height": "Height",
+            "weight": "Weight"
+          }
+        },
+        "addNewBtn": "Add New"
+      },
+      "table": {
+        "headers": {
+          "name": "NAME",
+          "surname": "SURNAME",
+          "gender": "GENDER",
+          "height": "HEIGHT",
+          "weight": "WEIGHT"
+        },
+        "genderMap": {
+          "male": "Male",
+          "female": "Female"
+        },
+        "noData": "No Data"
+      }
+    }
   }
 }

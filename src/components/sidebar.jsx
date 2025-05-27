@@ -11,7 +11,6 @@ import {
   Medal,
   Menu,
   Trophy,
-  Home,
   Volleyball,
   Calendar,
 } from "lucide-react";
@@ -64,7 +63,7 @@ export default function Sidebar() {
       >
         <div className="h-full flex flex-col justify-center">
           <Link
-            href="/dashboard"
+            href="/dashboard/athlete"
             className="h-16 px-6 flex items-center border-b border-gray-200"
           >
             <div className="flex items-center gap-1.5">
@@ -78,10 +77,6 @@ export default function Sidebar() {
 
           <div className="flex-1 overflow-y-auto py-4 px-4">
             <div className="space-y-6">
-              <NavItem href="/dashboard" icon={Home}>
-                {t('dashboard')}
-              </NavItem>
-
               <div>
                 <div className="px-3 mb-2 text-xs font-semibold uppercase tracking-wider text-gray-500 ">
                   {t('team.label')}

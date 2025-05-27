@@ -1,9 +1,9 @@
 import { getLocale } from "next-intl/server";
-import { SessionProvider } from "next-auth/react"; 
-import { NextIntlClientProvider } from "next-intl";
 
 import { Toaster } from "react-hot-toast";
 import { GeistSans } from "geist/font/sans";
+import { SessionProvider } from "next-auth/react";
+import { NextIntlClientProvider } from "next-intl";
 
 import "./globals.css";
 

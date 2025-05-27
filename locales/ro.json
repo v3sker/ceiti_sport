@@ -117,5 +117,45 @@
       "call_to_add": "Adaugă înregistrări despre evenimente noi",
       "add_btn": "Adaugă"
     }
+  },
+
+  "athlete": {
+    "page": {
+      "title": "Atleți",
+      "controls": {
+        "orderDirection": {
+          "placeholder": "Direcție...",
+          "labels": {
+            "ascending": "Ascendent",
+            "descending": "Descendent"
+          }
+        },
+        "orderBy": {
+          "placeholder": "Sortare după...",
+          "labels": {
+            "createdAt": "Creat la",
+            "updatedAt": "Actualizat la",
+            "gender": "Gen",
+            "height": "Înălțime",
+            "weight": "Greutate"
+          }
+        },
+        "addNewBtn": "Adaugă nou"
+      },
+      "table": {
+        "headers": {
+          "name": "PRENUME",
+          "surname": "NUME",
+          "gender": "GEN",
+          "height": "ÎNĂLȚIME",
+          "weight": "GREUTATE"
+        },
+        "genderMap": {
+          "male": "Barbat",
+          "female": "Femeie"
+        },
+        "noData": "Fără date"
+      }
+    }
   }
 }

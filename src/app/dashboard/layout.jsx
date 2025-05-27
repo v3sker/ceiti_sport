@@ -1,7 +1,10 @@
 "use client"
+import { queryClient } from "@/lib/query-client";
 
-import Sidebar from "@/components/sidebar"
-import TopNav from "@/components/top-nav"
+import TopNav from "@/components/top-nav";
+import Sidebar from "@/components/sidebar";
+import { QueryClientProvider } from "@tanstack/react-query";
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 
 export default function Layout({ children }) {
   return (
@@ -11,7 +14,12 @@ export default function Layout({ children }) {
         <header className="h-16">
           <TopNav />
         </header>
-        <main className="flex-1 overflow-auto p-6 bg-muted/80 flex justify-center">{children}</main>
+        <QueryClientProvider client={queryClient}>
+          <main className="flex-1 overflow-auto p-6 bg-muted/80 flex justify-center">
+            {children}
+          </main>
+          <ReactQueryDevtools initialIsOpen={false} />
+        </QueryClientProvider>
       </div>
     </div>
   )
