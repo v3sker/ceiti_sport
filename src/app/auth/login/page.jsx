@@ -79,10 +79,15 @@ export default function LoginPage() {
               reject(errorMsg);
             }
 
-            resolve();
-            setTimeout(() => {
-              window.location.reload();
-            }, 3000);
+            if (res.success) {
+              resolve();
+              setTimeout(() => {
+                window.location.reload();
+              }, 3000);
+            } else {
+              reject(tFunc('errors.5_unknown'))
+            }
+
           })
         } catch (err) {
           reject(err.message);
@@ -110,7 +115,7 @@ export default function LoginPage() {
           <Image src='/logo.png' width={300} height={0} alt={'Logo Minister'} />
         </div>
 
-        <Card className="w-full max-w-md">
+        <Card className="w-full max-w-md border shadow-none">
           <CardHeader className="space-y-1">
             <CardTitle className="text-2xl">{t("title")}</CardTitle>
             <CardDescription>{t("description")}</CardDescription>

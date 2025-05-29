@@ -1,6 +1,7 @@
 'use server';
 
 import { db } from "@/lib/db";
+import {differenceInYears} from "date-fns";
 
 export async function fetchAthletes(filters) {
   try {
@@ -19,6 +20,9 @@ export async function fetchAthletes(filters) {
       case "gender":
         orderBy = { gender: filters.orderDirection };
         break;
+      case "birthdate":
+        orderBy = { birthdate: filters.orderDirection };
+        break;
       case "weight":
         orderBy = { weight: filters.orderDirection };
         break;
@@ -27,9 +31,20 @@ export async function fetchAthletes(filters) {
         break;
     }
 
-    const athletes = await db.athlete.findMany({
+    let athletes = await db.athlete.findMany({
+      where: {
+        id: filters.id ? parseInt(filters.id) : undefined,
+        gender: filters.gender,
+        sport: { name: filters.sport },
+      },
       orderBy,
+      include: {
+        sport: true
+      }
     });
+
+    if (filters.minAge) athletes = athletes.filter(item => differenceInYears(new Date(), item.birthdate) >= filters.minAge)
+    if (filters.maxAge) athletes = athletes.filter(item => differenceInYears(new Date(), item.birthdate) <= filters.maxAge)
 
     return athletes.map((athlete) => ({
       ...athlete,

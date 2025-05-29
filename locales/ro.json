@@ -7,45 +7,46 @@
 
   "login": {
     "page": {
-      "title": "Bine a-ti revenit!",
-      "description": "Introduceti datele de autentificare pentru a accesa contul",
+      "title": "Bine ai revenit",
+      "description": "Introdu credențialele pentru a accesa contul",
       "form": {
         "email": {
           "label": "Email",
-          "placeholder": "m@exemplu.md"
+          "placeholder": "m@exemplu.com"
         },
         "password": {
-          "label": "Parola"
+          "label": "Parolă",
+          "forgot": "Ai uitat parola?"
         },
         "button": "Autentificare"
       },
 
       "promise": {
-        "loading": "Autentificare...",
-        "success": "Autentificare reusita!",
-        "error": "Eroare de autentificare!"
+        "loading": "Autentificare în curs...",
+        "success": "Autentificat!",
+        "error": "Eroare la autentificare!"
       }
     },
 
     "function": {
       "validation": {
         "email": {
-          "required": "Email-ul e obligatoriu",
-          "invalid": "Email incorect"
+          "required": "Emailul este necesar",
+          "invalid": "Emailul este invalid"
         },
         "password": {
-          "required": "Parola e obligatorie",
-          "min": "Parola trebuie sa contina cel putin {min} caractere",
-          "max": "Parola trebuie sa contina cel mult {max} caractere"
+          "required": "Parola este necesară",
+          "min": "Parola trebuie să aibă cel puțin {min} caractere",
+          "max": "Parola trebuie să aibă cel mult {max} caractere"
         }
       },
       "errors": {
-        "1_incorrectData": "Email sau parola incorecta!",
-        "2_emailNotVerified": "Email-ul nu este verificat! Verificati posta",
-        "3_emailNotVerified_Sent": "Email-ul nu este verificat! Era trimisa scrisoare noua",
-        "4_accessDenied": "Acces interzis!",
-        "5_unknown": "Eroare necunoscuta! Contactati administratorul",
-        "6_unknownWithDetails": "Eroare necunoscuta! Contactati administratorul. Eroare: {error}",
+        "1_incorrectData": "Email sau parolă incorecte!",
+        "2_emailNotVerified": "Emailul nu este verificat! Verifică căsuța poștală",
+        "3_emailNotVerified_Sent": "Emailul nu este verificat! Email de verificare retrimis",
+        "4_accessDenied": "Acces refuzat!",
+        "5_unknown": "Eroare necunoscută! Contactează administratorul.",
+        "6_unknownWithDetails": "Eroare necunoscută! Contactează administratorul. Eroare: {error}",
         "7_validation": "Eroare de validare!",
         "8_validationWithDetails": "Eroare de validare! Detalii: {details}"
       }
@@ -56,19 +57,34 @@
     "page": {
       "title": "Verificare email",
       "pending": "Se verifică emailul...",
-      "success": "Email verificat cu succes!",
+      "success": "Verificat cu succes!",
       "errors": {
-        "noToken": "Tokenul de verificare nu a fost specificat!"
+        "noToken": "Tokenul de verificare nu este specificat!"
       }
     },
 
     "function": {
       "errors": {
-        "1_incorrectToken": "Eroare de verificare! Token incorect",
-        "2_expiredToken": "Eroare de verificare! Tokenul a expirat",
-        "3_noUserByMail": "Eroare de verificare! Nu am găsit un utilizator cu acest email",
-        "0_unknown": "Eroare necunoscută de verificare!"
+        "1_incorrectToken": "Eroare la verificare! Token incorect",
+        "2_expiredToken": "Eroare la verificare! Tokenul a expirat",
+        "3_noUserByMail": "Eroare la verificare! Utilizatorul cu acest email nu a fost găsit",
+        "0_unknown": "Eroare necunoscută la verificare!"
       }
+    }
+  },
+
+  "sidebar": {
+    "dashboard": "Tablou de bord",
+    "team": {
+      "label": "Echipă",
+      "athletes": "Sportivi",
+      "newAthlete": "Sportiv nou",
+      "participation": "Participare"
+    },
+    "admin": {
+      "label": "Administrator",
+      "users": "Utilizatori",
+      "new_user": "Utilizator nou"
     }
   },
 
@@ -77,32 +93,17 @@
       "guest": "Vizitator",
       "user": "Utilizator",
       "moderator": "Moderator",
-      "admin": "Administrator"
+      "admin": "Admin",
+      "superuser": "Superutilizator"
     },
     "sign_out": "Deconectare"
   },
 
-  "sidebar": {
-    "dashboard": "Tablou de bord",
-    "team": {
-      "label": "Echipă",
-      "athletes": "Atleți",
-      "sports": "Sporturi",
-      "events": "Evenimente",
-      "participation": "Participare"
-    },
-    "admin": {
-      "label": "Administrare",
-      "users": "Utilizatori",
-      "new_user": "Utilizator nou"
-    }
-  },
-
   "dashboard": {
     "athletes": {
-      "title": "Atleți",
-      "not_found": "Niciun atlet găsit",
-      "call_to_add": "Adaugă înregistrări despre atleți",
+      "title": "Sportivi",
+      "not_found": "Niciun sportiv găsit",
+      "call_to_add": "Adaugă înregistrări despre sportivi",
       "add_btn": "Adaugă"
     },
     "sports": {
@@ -121,7 +122,7 @@
 
   "athlete": {
     "page": {
-      "title": "Atleți",
+      "title": "Sportivi",
       "controls": {
         "orderDirection": {
           "placeholder": "Direcție...",
@@ -136,25 +137,213 @@
             "createdAt": "Creat la",
             "updatedAt": "Actualizat la",
             "gender": "Gen",
+            "birthdate": "Data nașterii",
             "height": "Înălțime",
             "weight": "Greutate"
           }
         },
-        "addNewBtn": "Adaugă nou"
+        "addNewBtn": "Adaugă nou",
+        "refreshBtn": "Reîmprospătează",
+        "exportBtn": "Exportă"
       },
       "table": {
         "headers": {
           "name": "PRENUME",
           "surname": "NUME",
           "gender": "GEN",
+          "birthdate": "DATA NAȘTERII",
           "height": "ÎNĂLȚIME",
-          "weight": "GREUTATE"
+          "weight": "GREUTATE",
+          "sport": "SPORT"
         },
         "genderMap": {
-          "male": "Barbat",
+          "male": "Bărbat",
           "female": "Femeie"
         },
+        "sportsMap": {
+          "football": "Fotbal",
+          "basketball": "Baschet",
+          "tennis": "Tenis",
+          "gymnastics": "Gimnastică",
+          "swimming": "Înot"
+        },
+        "noData": "Fără date",
+        "submenu": {
+          "delete": {
+            "button": "Șterge",
+            "title": "Ștergi {athleteName}?",
+            "description": "Această acțiune este ireversibilă.",
+            "closeBtn": "Anulează",
+            "deleting": "Se șterge"
+          }
+        },
+        "filters": {
+          "gender": {
+            "search": "Caută element...",
+            "notFound": "Niciun element găsit."
+          },
+          "age": {
+            "minLabel": "Vârsta min.",
+            "maxLabel": "Vârsta max."
+          },
+          "weight": {
+            "text": "Greutate medie",
+            "noData": "Fără date"
+          },
+          "sport": {
+            "search": "Caută sport...",
+            "notFound": "Niciun sport găsit."
+          }
+        },
+        "years": "ani"
+      }
+    },
+    "function": {
+      "deleteAthlete": {
+        "toast": {
+          "loading": "Se șterge...",
+          "success": "Sportiv șters",
+          "error": "Eroare la ștergerea sportivului"
+        },
+        "errors": {
+          "1_notSpecified": "Sportivul nu este specificat",
+          "2_noUser": "Nu se pot citi datele utilizatorului! Reîncarcă pagina",
+          "3_accessDenied": "Nu ai suficiente drepturi pentru această acțiune",
+          "4_notFound": "Sportivul cu acest ID nu a fost găsit"
+        }
+      },
+      "export": {
+        "promise": {
+          "loading": "Se exportă...",
+          "success": "Export finalizat",
+          "error": "Eroare la exportul datelor"
+        }
+      }
+    }
+  },
+
+  "newAthlete": {
+    "page": {
+      "accessDenied": "Acces interzis!",
+      "title": "Sportiv nou",
+      "submitBtn": "Adaugă",
+      "form": {
+        "general": {
+          "title": "Date generale",
+          "name": {
+            "label": "Prenume",
+            "placeholder": "Ion"
+          },
+          "surname": {
+            "label": "Nume",
+            "placeholder": "Ciobanu"
+          },
+          "birthdate": {
+            "label": "Data nașterii",
+            "dayPlaceholder": "23",
+            "monthPlaceholder": "02",
+            "yearPlaceholder": "2006"
+          },
+          "gender": {
+            "label": "Gen",
+            "placeholder": "Gen...",
+            "male": "Bărbat",
+            "female": "Femeie"
+          }
+        },
+        "parameters": {
+          "title": "Parametri",
+          "height": {
+            "label": "Înălțime",
+            "placeholder": "182.3"
+          },
+          "weight": {
+            "label": "Greutate",
+            "placeholder": "75.6"
+          }
+        },
+        "sports": {
+          "title": "Sport practicat",
+          "label": "Sport",
+          "placeholder": "Selectează sportul",
+          "options": {
+            "FOOTBALL": "Fotbal",
+            "BASKETBALL": "Baschet",
+            "TENNIS": "Tenis",
+            "GYMNASTICS": "Gimnastică",
+            "SWIMMING": "Înot"
+          }
+        }
+      }
+    },
+    "schema": {
+      "name": {
+        "required": "Prenumele este necesar",
+        "min": "Cel puțin {value} litere",
+        "max": "Cel mult {value} litere"
+      },
+      "surname": {
+        "required": "Numele este necesar",
+        "min": "Cel puțin {value} litere",
+        "max": "Cel mult {value} litere"
+      },
+      "gender": {
+        "required": "Genul este necesar"
+      },
+      "invalidDecimal": "Valoare zecimală invalidă",
+      "birthdate": {
+        "invalidDay": "Zi invalidă",
+        "invalidMonth": "Lună invalidă",
+        "invalidYear": "An invalid"
+      },
+      "sport": {
+        "required": "Include sportul practicat"
+      }
+    },
+    "function": {
+      "toast": {
+        "loading": "Se creează...",
+        "success": "Sportiv creat",
+        "error": "Eroare la crearea sportivului"
+      },
+      "errors": {
+        "1_noUser": "Nu s-au putut citi datele utilizatorului",
+        "2_accessDenied": "Acces interzis!"
+      }
+    }
+  },
+
+  "participation": {
+    "page": {
+      "title": "Participare",
+      "controls": {
+        "refreshBtn": "Reîmprospătează"
+      }
+    },
+    "table": {
+      "headers": {
+        "competition": {
+          "name": "COMPETIȚIE",
+          "dateFrom": "DE LA",
+          "dateUntil": "PÂNĂ LA",
+          "level": "NIVEL"
+        },
+        "athlete": {
+          "fullname": "SPORTIV",
+          "placement": "CLASARE"
+        },
         "noData": "Fără date"
+      },
+      "competitionLevelsMap": {
+        "republic": "Republican",
+        "national": "Național",
+        "international": "Internațional"
+      },
+      "filters": {
+        "competitionLevel": {
+          "search": "Caută nivele...",
+          "notFound": "Nivele negăsite"
+        }
       }
     }
   }

@@ -15,6 +15,7 @@ export function CustomCombobox({
   setValue,
   removeValue = false,
   placeholder,
+  minWidth,
 }) {
   const [open, setOpen] = useState(false);
 
@@ -25,7 +26,7 @@ export function CustomCombobox({
           variant="outline"
           role="combobox"
           aria-expanded={open}
-          className="min-w-[150px] justify-between flex gap-2"
+          className={`${minWidth} justify-between flex gap-2`}
         >
           {value
             ? options.find((option) => option.value === value)?.label

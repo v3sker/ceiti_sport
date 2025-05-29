@@ -1,0 +1,1 @@
+export const MODERATOR_ROLES = [ "MODERATOR", "ADMIN"];

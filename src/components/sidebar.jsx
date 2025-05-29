@@ -2,25 +2,18 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { useSession } from "next-auth/react";
+import {useTranslations} from "next-intl";
 
 import {
   Users,
-  UserCog,
   UserPlus,
-  Medal,
   Menu,
   Trophy,
-  Volleyball,
-  Calendar,
+  Medal
 } from "lucide-react";
-import {useTranslations} from "next-intl";
 
 export default function Sidebar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-
-  const { data: session } = useSession();
-  const user = session?.user;
 
   const t = useTranslations("sidebar");
 
@@ -85,33 +78,14 @@ export default function Sidebar() {
                   <NavItem href="/dashboard/athlete" icon={Users}>
                     {t('team.athletes')}
                   </NavItem>
-                  <NavItem href="/dashboard/sport" icon={Volleyball}>
-                    {t('team.sports')}
-                  </NavItem>
-                  <NavItem href="/dashboard/event" icon={Calendar}>
-                    {t('team.events')}
+                  <NavItem href="/dashboard/athlete/new" icon={UserPlus}>
+                    {t('team.newAthlete')}
                   </NavItem>
                   <NavItem href="/dashboard/participation" icon={Medal}>
                     {t('team.participation')}
                   </NavItem>
                 </div>
               </div>
-
-              {(user && (user.role === "ADMIN" || "SUPERUSER")) && (
-                <div>
-                  <div className="px-3 mb-2 text-xs font-semibold uppercase tracking-wider text-gray-500">
-                    {t('admin.label')}
-                  </div>
-                  <div className="space-y-1">
-                    <NavItem href="/dashboard/users" icon={UserCog}>
-                      {t('admin.users')}
-                    </NavItem>
-                    <NavItem href="/dashboard/users/new" icon={UserPlus}>
-                      {t('admin.new_user')}
-                    </NavItem>
-                  </div>
-                </div>
-              )}
             </div>
           </div>
         </div>

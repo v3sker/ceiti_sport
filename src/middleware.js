@@ -36,7 +36,7 @@ export default auth((req) => {
     return Response.redirect(new URL("/auth/login", nextUrl));
   }
 
-  // If logged in and route is root - redirect to /dashboard
+  // If logged in and route is root - redirect to /dashboard/athlete
   if (isLoggedIn && nextUrl.pathname === '/') {
     return Response.redirect(new URL("/dashboard/athlete", nextUrl));
   }

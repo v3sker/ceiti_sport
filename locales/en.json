@@ -78,8 +78,7 @@
     "team": {
       "label": "Team",
       "athletes": "Athletes",
-      "sports": "Sports",
-      "events": "Events",
+      "newAthlete": "New Athlete",
       "participation": "Participation"
     },
     "admin": {
@@ -94,7 +93,8 @@
       "guest": "Guest",
       "user": "User",
       "moderator": "Moderator",
-      "admin": "Administrator"
+      "admin": "Admini",
+      "superuser": "Superuser"
     },
     "sign_out": "Sign Out"
   },
@@ -137,25 +137,212 @@
             "createdAt": "Created At",
             "updatedAt": "Updated At",
             "gender": "Gender",
+            "birthdate": "Birthday",
             "height": "Height",
             "weight": "Weight"
           }
         },
-        "addNewBtn": "Add New"
+        "addNewBtn": "Add New",
+        "refreshBtn": "Refresh",
+        "exportBtn": "Export"
       },
       "table": {
         "headers": {
           "name": "NAME",
           "surname": "SURNAME",
           "gender": "GENDER",
+          "birthdate": "BIRTHDAY",
           "height": "HEIGHT",
-          "weight": "WEIGHT"
+          "weight": "WEIGHT",
+          "sport": "SPORT"
         },
         "genderMap": {
           "male": "Male",
           "female": "Female"
         },
+        "sportsMap": {
+          "football": "Football",
+          "basketball": "Basketball",
+          "tennis": "Tennis",
+          "gymnastics": "Gymnastics",
+          "swimming": "Swimming"
+        },
+        "noData": "No Data",
+        "submenu": {
+          "delete": {
+            "button": "Delete",
+            "title": "Delete {athleteName}?",
+            "description": "By doing this you will not be able to restore deleted data.",
+            "closeBtn": "Cancel",
+            "deleting": "Deleting"
+          }
+        },
+        "filters": {
+          "gender": {
+            "search": "Search item...",
+            "notFound": "No items found."
+          },
+          "age": {
+            "minLabel": "Min. age",
+            "maxLabel": "Max. age"
+          },
+          "weight": {
+            "text": "Average weight",
+            "noData": "No Data"
+          },
+          "sport": {
+            "search": "Search item...",
+            "notFound": "No items found."
+          }
+        },
+        "years": "years"
+      }
+    },
+    "function": {
+      "deleteAthlete": {
+        "toast": {
+          "loading": "Deleting...",
+          "success": "Athlete deleted",
+          "error": "Error deleting athlete"
+        },
+        "errors": {
+          "1_notSpecified": "Athlete not specified",
+          "2_noUser": "Cannot read user data! Try reloading the page",
+          "3_accessDenied": "Not enough rights to perform this action",
+          "4_notFound": "Athlete with this ID not found"
+        }
+      },
+      "export": {
+        "promise": {
+          "loading": "Exporting...",
+          "success": "Export completed",
+          "error": "Error exporting data"
+        }
+      }
+    }
+  },
+
+  "newAthlete": {
+    "page": {
+      "accessDenied": "Access Denied!",
+      "title": "New Athlete",
+      "submitBtn": "Add",
+      "form": {
+        "general": {
+          "title": "General Data",
+          "name": {
+            "label": "Name",
+            "placeholder": "Ion"
+          },
+          "surname": {
+            "label": "Surname",
+            "placeholder": "Ciobanu"
+          },
+          "birthdate": {
+            "label": "Birthday",
+            "dayPlaceholder": "23",
+            "monthPlaceholder": "02",
+            "yearPlaceholder": "2006"
+          },
+          "gender": {
+            "label": "Gender",
+            "placeholder": "Gender...",
+            "male": "Male",
+            "female": "Female"
+          }
+        },
+        "parameters": {
+          "title": "Parameters",
+          "height": {
+            "label": "Height",
+            "placeholder": "182.3"
+          },
+          "weight": {
+            "label": "Weight",
+            "placeholder": "75.6"
+          }
+        },
+        "sports": {
+          "title": "Practiced Sport",
+          "label": "Sport",
+          "placeholder": "Select sport",
+          "options": {
+            "FOOTBALL": "Football",
+            "BASKETBALL": "Basketball",
+            "TENNIS": "Tennis",
+            "GYMNASTICS": "Gymnastics",
+            "SWIMMING": "Swimming"
+          }
+        }
+      }
+    },
+    "schema": {
+      "name": {
+        "required": "Name is required",
+        "min": "At least {value} letters",
+        "max": "At most {value} letters"
+      },
+      "surname": {
+        "required": "Surname is required",
+        "min": "At least {value} letters",
+        "max": "At most {value} letters"
+      },
+      "gender": {
+        "required": "Gender is required"
+      },
+      "invalidDecimal": "Invalid decimal value",
+      "birthdate": {
+        "invalidDay": "Invalid day",
+        "invalidMonth": "Invalid month",
+        "invalidYear": "Invalid year"
+      },
+      "sport": {
+        "required": "Include practiced sport"
+      }
+    },
+    "function": {
+      "toast": {
+        "loading": "Creating...",
+        "success": "Athlete created",
+        "error": "Error creating athlete"
+      },
+      "errors": {
+        "1_noUser": "Couldn't read user data",
+        "2_accessDenied": "Access denied!"
+      }
+    }
+  },
+  "participation": {
+    "page": {
+      "title": "Participation",
+      "controls": {
+        "refreshBtn": "Refresh"
+      }
+    },
+    "table": {
+      "headers": {
+        "competition": {
+          "name": "COMPETITION",
+          "dateFrom": "FROM",
+          "dateUntil": "UNTIL",
+          "level": "LEVEL"
+        },
+        "athlete": {
+          "fullname": "ATHLETE",
+          "placement": "PLACEMENT"
+        },
         "noData": "No Data"
+      },
+      "competitionLevelsMap": {
+        "republic": "Republic",
+        "national": "National",
+        "international": "International"
+      },
+      "filters": {
+        "competitionLevel": {
+          "search": "Search levels...",
+          "notFound": "Levels not found"
+        }
       }
     }
   }

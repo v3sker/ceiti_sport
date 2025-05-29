@@ -20,7 +20,11 @@ export default function MiniProfile({ user }) {
   const t = useTranslations('mini_profile');
 
   const userRoles = {
-    "GUEST": t('roles.guest')
+    "GUEST": t('roles.guest'),
+    "USER": t('roles.user'),
+    "MODERATOR": t('roles.moderator'),
+    "ADMIN": t('roles.admin'),
+    "SUPERUSER": t('roles.superuser'),
   }
 
   return (

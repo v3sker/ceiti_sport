@@ -15,7 +15,7 @@ export default function Layout({ children }) {
           <TopNav />
         </header>
         <QueryClientProvider client={queryClient}>
-          <main className="flex-1 overflow-auto p-6 bg-muted/80 flex justify-center">
+          <main className="flex-1 overflow-auto bg-muted/80 flex justify-center">
             {children}
           </main>
           <ReactQueryDevtools initialIsOpen={false} />
