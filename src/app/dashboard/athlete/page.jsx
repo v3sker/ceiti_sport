@@ -337,6 +337,13 @@ export default function AthletesPage() {
                     </TableHead>
                     <TableHead className={`h-[36px] font-bold`}>
                       <span
+                        className={`text-foreground transition flex gap-1 items-center`}
+                      >
+                        IDNP
+                      </span>
+                    </TableHead>
+                    <TableHead className={`h-[36px] font-bold`}>
+                      <span
                         className={`text-foreground transition flex gap-1 items-center justify-center`}
                       >
                         {t('table.headers.gender')}
@@ -508,7 +515,7 @@ export default function AthletesPage() {
                             }}
                           />
                         </TableCell>
-                        <TableCell className={'text-left py-0 w-[80px]'}>
+                        <TableCell className={'text-left py-0 w-[60px]'}>
                           {item.id}
                         </TableCell>
                         <TableCell className={'text-left py-0'}>
@@ -516,6 +523,9 @@ export default function AthletesPage() {
                         </TableCell>
                         <TableCell className={'text-left py-0'}>
                           {item.surname}
+                        </TableCell>
+                        <TableCell className={'text-left py-0'}>
+                          {item.idnp}
                         </TableCell>
                         <TableCell className={'text-center py-0'}>
                           <Badge variant={item.gender}>{GENDERS_MAP[item.gender]}</Badge>

@@ -238,6 +238,10 @@
             "label": "Surname",
             "placeholder": "Ciobanu"
           },
+          "idnp": {
+            "label": "IDNP",
+            "placeholder": "2004005412342"
+          },
           "birthdate": {
             "label": "Birthday",
             "dayPlaceholder": "23",
@@ -286,6 +290,11 @@
         "required": "Surname is required",
         "min": "At least {value} letters",
         "max": "At most {value} letters"
+      },
+      "idnp": {
+        "required": "IDNP is required",
+        "min": "At least 13 chars",
+        "max": "At most 13 chars"
       },
       "gender": {
         "required": "Gender is required"

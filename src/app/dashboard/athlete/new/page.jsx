@@ -42,6 +42,7 @@ export default function NewAthletePage() {
     defaultValues: {
       name: "",
       surname: "",
+      idnp: "",
       birthdate: {
         day: '',
         month: '',
@@ -88,8 +89,15 @@ export default function NewAthletePage() {
           console.log(values);
 
           await createAthlete(values).then(res => {
-            if (!res.error && !res.success) reject('Unknown error');
-            if (res.error) reject(res.error);
+            if (!res.error && !res.success) {
+              reject('Unknown error');
+              return;
+            }
+
+            if (res.error) {
+              reject(res.error);
+              return;
+            }
 
             router.push('/dashboard/athlete');
             queryClient.invalidateQueries({ queryKey: ['athletes'] })
@@ -162,6 +170,20 @@ export default function NewAthletePage() {
                         <FormLabel>{tForm('general.surname.label')}</FormLabel>
                         <FormControl>
                           <Input placeholder={tForm('general.surname.placeholder')} {...field} />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+
+                  <FormField
+                    control={form.control}
+                    name={'idnp'}
+                    render={({ field }) => (
+                      <FormItem className={'w-full space-y-1'}>
+                        <FormLabel>{tForm('general.idnp.label')}</FormLabel>
+                        <FormControl>
+                          <Input placeholder={tForm('general.idnp.placeholder')} {...field} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>

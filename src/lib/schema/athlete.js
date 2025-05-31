@@ -10,6 +10,10 @@ export function getNewAthleteSchema(t) {
       .required(t('surname.required'))
       .min(3, t('surname.min', { value: 3 }))
       .max(50, t('surname.max', { value: 50 })),
+    idnp: yup.string()
+      .required(t('idnp.required'))
+      .min(13, t('idnp.min'))
+      .max(13, t('idnp.max')),
     birthdate: yup.object().shape({
       day: yup.string().test(
         'is-valid-day',
@@ -69,6 +73,10 @@ export const NewAthleteSchema = yup.object().shape({
     .required()
     .min(3)
     .max(50),
+  idnp: yup.string()
+    .required()
+    .min(13)
+    .max(13),
   birthdate: yup.object().shape({
     day: yup.string().test(
       'is-valid-day',

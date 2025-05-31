@@ -11,6 +11,7 @@ model athlete {
   id                              Int                   @id @default(autoincrement())
   name                            String                @db.VarChar(50)
   surname                         String                @db.VarChar(50)
+  idnp                            String                @unique @db.Char(13)
   gender                          athlete_gender_enum
   height                          Decimal?              @db.Decimal(5, 2)
   weight                          Decimal?              @db.Decimal(5, 2)

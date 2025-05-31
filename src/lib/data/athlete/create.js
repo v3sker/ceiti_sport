@@ -8,12 +8,16 @@ export async function createAthlete(values) {
     const validatedData = await NewAthleteSchema.validate(values);
     if (!validatedData) throw new Error('Validation failed');
 
+    const athleteWithSameIDNP = await db.athlete.findUnique({ where: { idnp: validatedData.idnp } });
+    if (athleteWithSameIDNP) throw new Error('Sportiv cu acest IDNP deja exista.')
+
     const birthdate = new Date(`${validatedData.birthdate.year}-${validatedData.birthdate.month}-${validatedData.birthdate.day}`)
 
     await db.athlete.create({
       data: {
         name: validatedData.name,
         surname: validatedData.surname,
+        idnp: validatedData.idnp,
         gender: validatedData.gender,
         birthdate,
         height: validatedData.height === "" ? undefined : validatedData.height,

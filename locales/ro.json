@@ -238,6 +238,10 @@
             "label": "Nume",
             "placeholder": "Ciobanu"
           },
+          "idnp": {
+            "label": "IDNP",
+            "placeholder": "2004005412342"
+          },
           "birthdate": {
             "label": "Data nașterii",
             "dayPlaceholder": "23",
@@ -286,6 +290,11 @@
         "required": "Numele este necesar",
         "min": "Cel puțin {value} litere",
         "max": "Cel mult {value} litere"
+      },
+      "idnp": {
+        "required": "IDNP este necesar",
+        "min": "Cel puțin 13 litere",
+        "max": "Cel mult 13 litere"
       },
       "gender": {
         "required": "Genul este necesar"
