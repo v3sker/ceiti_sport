@@ -589,7 +589,7 @@ export default function AthletesPage() {
                 ) : (
                   <TableBody>
                     <TableRow className={'bg-background h-32 hover:bg-background'}>
-                      <TableCell colSpan={10} >
+                      <TableCell colSpan={11} >
                         <h2 className={'text-xl text-center font-medium'}>{tTable('noData')}</h2>
                       </TableCell>
                     </TableRow>
